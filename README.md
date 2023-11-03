@@ -1,15 +1,16 @@
 # Goea Technical Evaluation
 ## Instructions
 ### Objectives / Rules
-To showcase the **climbing feature**, I have set multiple objects including walls, pillar, ceiling, ramps to test if the player can behave correctly when facing climbable/non-climbable objects.
+To showcase the **climbing feature**, multiple objects (terrains) including walls, pillar, ceiling, ramps to test if the player can behave correctly when facing climbable/non-climbable objects.
 
 Also, a Dummy character is placed inside the level that **reacts to attack**.
 ![Attack blueprint](/pics/demo.gif)
 ### Controls
-- **Running**: press `W A S D` to make the player run in different directions.
-- **Jumping**: press `Space Bar` to start a jump. If there is a climbable surface in front of the player, he will **climb**.
-- **End Climbing**: press `E` to stop climbing.
-- **Attacking**: press `Left Mouse Button` to attack. The player will not be able to run, jump, or climb during attack.
+- **Run**: press `W A S D` to make the player run in different directions.
+- **Jump**: press `Space Bar` to start a jump.
+- **Climb**: press `E` to try climbing. If there is a climbable surface in front of the player, he will climb.
+- **Cancel Climb**: press `Q` to stop climbing.
+- **Attack**: press `Left Mouse Button` to attack. The player will not be able to run, jump, or climb during attack.
 
 ## What I've Worked On
 ### Attack
@@ -45,21 +46,26 @@ The climbing feature is created **completely in C++** inside my `UCustomCharacte
 2. Player __should not__ be able to climb on ceilings or floors (i.e., surface normal is nearly same direction as world up-direction.)
 3. Player __should not__ be able to climb objects that are lower than it's eye height. Calls `IsFacingSurface()` to **line-trace** forward at eye height to check if hitting the object.
 4. Player __should not__ be able to climb on other characters.
+![Unclimbable demo](./pics/unclimbable_objects.gif)
+>Red objects and character are unclimbable.
 
 ### Others
 - Climbing animations using **Blendspace**
+![Climb blendspace](./pics/blendspace.png)
 - Added **sound effects** for running, attacking, and climbing.
 - Dummy character always faces player when distance between them `<= 500`. (Implemented inside Blueprint)
 - Dummy character plays **attacked montage** and steps back due to root motion. (Implemented inside Blueprint)
 
 ## Issues / Bugs
 - Dummy sometimes teleports when attacked
-![Dummy Teleports](./pics/Issue_DummyTeleport.gif) 
     - Possible cause: 
-        Collision setting and root motion. Both Player and Dummy are set to preset object type __Pawn__ , thus probably making the Dummy to be "pushed" by player's right arm and the root motion cannot behave as expected.
-
+        Collision setting and root motion. Both Player and Dummy are set to preset object type __Pawn__ , thus probably making the Dummy to be "pushed" by player's right arm and the root motion cannot behave as expected. \
+![Dummy Teleports](./pics/Issue_DummyTeleport.gif) 
 - Compile error when project packaging. Error messages shows that the issue are related to my `CustomCharacterMovementComponent`.
 ![Error Massage](./pics/Issue_packaging.png)
+
+- Player cannot move after Unreal crashes or other random events. 
+    - This issue can be fixed by recreating a new player blurprint and replicating every component and settings. However, it appeared multiple times and it is time consuming to recreate and reset the character everytime.
 
 
 
