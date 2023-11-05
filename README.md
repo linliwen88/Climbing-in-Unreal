@@ -1,4 +1,4 @@
-# Climbing in Unreal (Goea Technical Evaluation)
+# Climbing in Unreal
 ## Instructions
 ### Objectives / Rules
 To showcase the **climbing feature**, multiple objects (terrains) including walls, pillar, ceiling, ramps are placed to test if the player can behave correctly when facing climbable/non-climbable objects.
