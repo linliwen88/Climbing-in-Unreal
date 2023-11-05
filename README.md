@@ -1,7 +1,7 @@
-# Goea Technical Evaluation
+# CLimbing in Unreal (Goea Technical Evaluation)
 ## Instructions
 ### Objectives / Rules
-To showcase the **climbing feature**, multiple objects (terrains) including walls, pillar, ceiling, ramps to test if the player can behave correctly when facing climbable/non-climbable objects.
+To showcase the **climbing feature**, multiple objects (terrains) including walls, pillar, ceiling, ramps are placed to test if the player can behave correctly when facing climbable/non-climbable objects.
 
 Also, a Dummy character is placed inside the level that **reacts to attack**.
 ![Attack blueprint](/pics/demo.gif)
@@ -22,9 +22,9 @@ Also, a Dummy character is placed inside the level that **reacts to attack**.
 - [x] Spamming the attack does not cancel itself.
     - This is done my wrapping a `Do once` node around attack logics. It will be reset after attack montage has completed playing. 
 - [x] Feedbacks while attacking:
-    - Plays __Sword Whoosh sfx__ when whipping the sword.
-    - Plays __Impact Sword_to_body sfx__ when Dummy is attacked.
-    - Applied __Camera shake__ when Dummy is attacked.
+    - Plays __Sword_whoosh sfx__ when whipping the sword.
+    - Plays __Impact_sword_to_body sfx__ when Dummy is attacked.
+    - Applied __Camera Shake__ when Dummy is attacked.
     - Dummy plays __On Damage montage__ when attacked and steps back due to root motion.
 
 ### Climbing
